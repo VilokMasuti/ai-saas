@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: ['replicate.delivery' /* add other domains here if needed */],
+  },
+}
 
-export default nextConfig;
+export default nextConfig
