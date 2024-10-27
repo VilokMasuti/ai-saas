@@ -25,7 +25,7 @@ export default function Header() {
   }
   return (
     <div
-      className="  bg-black w-full border-b border-white/5
+      className="  w-full
         py-4 px-4 items-center justify-between flex space-x-2"
     >
       {/* logo */}

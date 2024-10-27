@@ -5,7 +5,7 @@ const replicate = new Replicate({
   auth: `${process.env.NEXT_PUBLIC_REPLICATE_SECRET}`,
 })
 
-export async function POST(req) {
+export async function POST(req, res) {
   try {
     const { prompt, imageParams, canvas, userId } = await req.json()
     const startReplicate = await replicate.predictions.create({
