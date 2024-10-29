@@ -9,7 +9,7 @@
   }
   body {
     /* Ensure these colors are defined in your Tailwind config or replace them with default classes */
-    @apply bg-gray-900 text-white;
+    @apply bg-black text-white;
   }
 
   ::-webkit-scrollbar {

@@ -65,10 +65,3 @@ export const imagesNumbers = [
   { name: 3, value: '3 images' },
   { name: 4, value: '4 images' },
 ]
-
-export const imagesSlase = [
-  { name: 1, img: '/assest/r.jpg' },
-  { name: 2, img: '/assest/photo_2024-10-27_19-21-20.jpg' },
-  { name: 3, img: '/assest/photo_2024-10-27_19-21-21 (2).jpg' },
-  { name: 4, img: '/assest/photo_2024-10-27_19-21-21 (3).jpg' },
-]

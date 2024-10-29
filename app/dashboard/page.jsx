@@ -21,9 +21,15 @@ export default function DashboardPage() {
 
   const imagesSlase = [
     { name: 1, img: '/assest/r.jpg' },
-    { name: 2, img: '/assest/photo_2024-10-27_19-21-20.jpg' },
-    { name: 3, img: '/assest/photo_2024-10-27_19-21-21 (2).jpg' },
-    { name: 4, img: '/assest/photo_2024-10-27_19-21-21 (3).jpg' },
+    { name: 2, img: '/assest/l.jpg' },
+    { name: 3, img: '/assest/b.jpg ' },
+    { name: 4, img: '/assest/ch.jpg' },
+    { name: 6, img: '/assest/hum.jpg' },
+    { name: 7, img: '/assest/wi.jpg' },
+    { name: 9, img: '/assest/photo_2024-10-27_19-21-21 (3).jpg' },
+    { name: 10, img: '/assest/t.jpg' },
+    { name: 11, img: '/assest/photo_2024-10-27_19-21-21 (5).jpg' },
+    { name: 12, img: '/assest/photo_2024-10-27_19-21-21 (4).jpg' },
   ]
 
   const createNewCanvas = async (event) => {
@@ -108,7 +114,7 @@ export default function DashboardPage() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0.5 }}
           transition={{ duration: 1 }}
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 "
         >
           <Image
             src={imagesSlase[currentImageIndex].img}
@@ -138,7 +144,7 @@ export default function DashboardPage() {
         >
           <button
             onClick={createNewCanvas}
-            className="P-text smooth cursor-pointer"
+            className="inline-flex h-12 font-spaceGrotesk text-center animate-shimmer items-center justify-center rounded-full border text-slate-700 border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
           >
             + new canvas
           </button>
@@ -185,7 +191,7 @@ export default function DashboardPage() {
                       transition={{ duration: 0.3 }}
                     />
                     <motion.p
-                      className="P-text relative z-20 px-4 py-2 text-center font-bold text-white"
+                      className="P-text relative z-20 px-4 py-2 animate-pulse duration-1000 text-center font-bold text-white"
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.3 }}
                     >

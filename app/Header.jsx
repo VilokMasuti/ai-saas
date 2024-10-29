@@ -29,8 +29,12 @@ export default function Header() {
         py-4 px-4 items-center justify-between flex space-x-2"
     >
       {/* logo */}
-      <Link href="dashboard" prefetch className="link">
-        Image <b className="text-yellow-400 font-mono pl-1">Playground_</b>
+      <Link
+        href="dashboard"
+        prefetch
+        className="link uppercase cursor-pointer "
+      >
+        Image <b className=" text-red-500 font-mono pl-1">Playground_</b>
       </Link>
       {/* dropdown */}
       <DropdownMenu>
@@ -45,23 +49,19 @@ export default function Header() {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="bg-black flex flex-col gap-3 w-28 text-center text-white border-white/10">
           <Link href={'/dashboard'}>
-            <DropdownMenuItem className=" ml-3  textC  font-bold">
+            <DropdownMenuItem className=" ml-3 uppercase  textC  cursor-pointer font-bold">
               dashboard
             </DropdownMenuItem>
           </Link>
           <Link href={'/usage'}>
-            <DropdownMenuItem className=" ml-3 textC  font-bold">
+            <DropdownMenuItem className=" ml-3 uppercase textC  cursor-pointer font-bold">
               usage
             </DropdownMenuItem>
           </Link>
-          <Link href={'/plans'}>
-            <DropdownMenuItem className=" ml-3 textC  font-bold">
-              plans
-            </DropdownMenuItem>
-          </Link>
+
           <DropdownMenuSeparator className="bg-white/10 " />
           <DropdownMenuItem
-            className=" ml-3 bg-text cursor-pointer textC  font-bold"
+            className=" ml-3 bg-text cursor-pointer uppercase textC  font-bold"
             onClick={signOut}
           >
             Logout

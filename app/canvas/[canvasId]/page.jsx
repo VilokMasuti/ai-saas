@@ -246,7 +246,8 @@ const Page = () => {
               onClick={generateImages}
               className="inline-flex h-12 text-center  outline-none animate-shimmer items-center gap-2 justify-center rounded-full border text-slate-700 border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium transition-colors "
             >
-              Generate <span className="animate-spin duration-1000">🪄</span>
+              {loading ? 'Loading...' : 'Generate Image'}
+              <span className="animate-spin duration-1000">🪄</span>
             </button>
           </div>
         </div>
@@ -504,7 +505,7 @@ const Page = () => {
                 setImageParams((prev) => ({ ...prev, model: value }))
               }
             >
-              <SelectTrigger className="w-[180px] bg-black  text-white  lg:ml-8 ml-[30%] md:ml-28 ">
+              <SelectTrigger className="w-[180px] bg-black  text-white  lg:ml-8 ml-[25%] md:ml-28 ">
                 <SelectValue placeholder="none" />
               </SelectTrigger>
 
@@ -566,7 +567,7 @@ const Page = () => {
               type="number"
               placeholder="0"
               min={0}
-              className=" py-1 outline-none px-2 Border lg:ml-8 ml-[30%] md:ml-28 textC   text-center"
+              className=" py-1 outline-none px-2 Border lg:ml-8 ml-[25%] md:ml-28 textC   text-center"
             />
           </div>
 

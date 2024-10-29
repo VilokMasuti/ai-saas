@@ -48,7 +48,7 @@ const Usagepage = () => {
     <div className=" max-h-screen w-full items-center justify-start P-text flex flex-col">
       <Header />
       <div
-        className=" min-h-[50vh] items-center justify-start flex flex-col
+        className=" min-h-[50vh] items-center bg-neutral-5 bg-neutral-50 font-spaceGrotesk text-black shadow-lg justify-start mt-32 flex flex-col
             rounded-lg w-3/4 lg:w-1/2 my-6 py-6 px-6"
       >
         <p className="border-b border-black/10 w-full pb-4 font-bold">
@@ -72,7 +72,7 @@ const Usagepage = () => {
             {/* progress */}
             <Progress
               value={(imagesUsage.edited / 30) * 100}
-              className="progress"
+              className="progress text-black/50"
             />
             <p>{imagesUsage.edited}/30</p>
           </span>
