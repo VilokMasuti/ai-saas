@@ -22,14 +22,14 @@ export default function DashboardPage() {
   const imagesSlase = [
     { name: 1, img: '/assest/r.jpg' },
     { name: 2, img: '/assest/l.jpg' },
-    { name: 3, img: '/assest/b.jpg ' },
+    { name: 3, img: '/assest/b.jpg' },
     { name: 4, img: '/assest/ch.jpg' },
-    { name: 6, img: '/assest/hum.jpg' },
-    { name: 7, img: '/assest/wi.jpg' },
-    { name: 9, img: '/assest/photo_2024-10-27_19-21-21 (3).jpg' },
-    { name: 10, img: '/assest/t.jpg' },
-    { name: 11, img: '/assest/photo_2024-10-27_19-21-21 (5).jpg' },
-    { name: 12, img: '/assest/photo_2024-10-27_19-21-21 (4).jpg' },
+    { name: 5, img: '/assest/hum.jpg' },
+    { name: 6, img: '/assest/wi.jpg' },
+    { name: 7, img: '/assest/photo_2024-10-27_19-21-21 (3).jpg' },
+    { name: 8, img: '/assest/t.jpg' },
+    { name: 9, img: '/assest/photo_2024-10-27_19-21-21 (5).jpg' },
+    { name: 10, img: '/assest/photo_2024-10-27_19-21-21 (4).jpg' },
   ]
 
   const createNewCanvas = async (event) => {

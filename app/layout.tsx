@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: 'AI Playground',
   description: 'Generate Ai',
   icons: {
-    icon: '/public/ai.png',
+    icon: '/ai.png',
   },
 }
 

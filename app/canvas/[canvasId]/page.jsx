@@ -242,6 +242,8 @@ const Page = () => {
 
           {/* Generate Button */}
           <div className="w-full items-center justify-center flex">
+
+
             <button
               onClick={generateImages}
               className="inline-flex h-12 text-center  outline-none animate-shimmer items-center gap-2 justify-center rounded-full border text-slate-700 border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium transition-colors "
