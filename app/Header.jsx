@@ -21,7 +21,7 @@ export default function Header() {
 
   const signOut = async () => {
     await supabase.auth.signOut()
-    router.push('/auth/sgin-in')
+    router.push('/sgin-in')
   }
   return (
     <div
