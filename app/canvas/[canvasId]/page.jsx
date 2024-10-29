@@ -74,7 +74,7 @@ const Page = () => {
     }
 
     // Create payload with user data, prompt, and selected parameters
-    const payload = {
+    let payload = {
       prompt,
       imageParams,
       canvas: canvasId,
@@ -91,7 +91,7 @@ const Page = () => {
         body: JSON.stringify(payload),
       })
 
-      if (res.ok) {
+      if (res && res.ok) {
         toast({
           title: 'Success!',
           description: 'Your image has been generated.',
@@ -101,13 +101,10 @@ const Page = () => {
       }
     } catch (error) {
       console.error('Error generating images:', error)
-      toast({
-        variant: 'outline',
-        className: 'bg-white text-black',
-        title: 'Generation Error',
-        description:
-          'There was an issue creating your image. Please try again.',
-      })
+    } finally {
+      setTimeout(() => {
+        fetchCreatedImages()
+      }, 3000)
     }
   }
 

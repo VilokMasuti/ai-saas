@@ -17,7 +17,7 @@ import { supabase } from '../supabse_client'
 export default function Header() {
   const [user] = useUser()
   const router = useRouter()
-  if (user == 'no user') router.replace('/auth/sgin-in')
+  if (user == 'no user') router.replace('/sgin-in')
 
   const signOut = async () => {
     await supabase.auth.signOut()
