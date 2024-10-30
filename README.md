@@ -4,7 +4,8 @@ Image Playground is a web application that allows users to generate, edit, and m
 
 ## Features
 
-- Image generation based on text prompts
+- Image generation based on text prompts![Uploading Screenshot 2024-10-29 210727.png…]()
+
 - Image editing capabilities (e.g., background removal, upscaling, captioning)
 - User authentication and profile management
 - Dashboard for managing generated and edited images
