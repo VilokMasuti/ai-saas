@@ -45,7 +45,7 @@ const Page = () => {
     number: 1,
   }
 
-  // Component state variables
+  // State variables
   const [editedImages, setEditedImages] = useState([]) // Stores images edited by the user
   const [OpenDialog, setOpenDialog] = useState(false) // Controls the open state of the image edit dialog
   const [prompt, setPrompt] = useState('') // User prompt for image generation
@@ -59,9 +59,9 @@ const Page = () => {
   const [loadingEditing, setLoadingEditing] = useState(false) // Loading state for image editing commands
   const [user] = useUser() // Current user data
 
-  // Function to initiate image generation based on user input and selected parameters
+  // Function to generate images based on user input and selected parameters
   const generateImages = async () => {
-    // Check if prompt is empty before proceeding
+    // Validate prompt
     if (!prompt || prompt.trim() === '') {
       toast({
         variant: 'outline',
@@ -73,7 +73,7 @@ const Page = () => {
       return
     }
 
-    // Create payload with user data, prompt, and selected parameters
+    // Prepare payload for API call
     let payload = {
       prompt,
       imageParams,
@@ -82,7 +82,7 @@ const Page = () => {
     }
 
     try {
-      // API call to backend to generate image(s)
+      // Make API call to generate image(s)
       const res = await fetch('/api/generate', {
         method: 'POST',
         headers: {
@@ -96,22 +96,25 @@ const Page = () => {
           title: 'Success!',
           description: 'Your image has been generated.',
         })
-        setPrompt('') // Clear prompt input after successful generation
-        setImageParams(intialParams) // Reset parameters to default
+        setPrompt('') // Clear prompt input
+        setImageParams(initialParams) // Reset parameters
       }
     } catch (error) {
       console.error('Error generating images:', error)
     } finally {
+      // Fetch updated images after a short delay
       setTimeout(() => {
         fetchCreatedImages()
       }, 3000)
     }
   }
 
+  // Function to fetch created and edited images
   const fetchCreatedImages = async () => {
-    setLoading(true) // Set loading state to true during fetch operation
+    setLoading(true)
 
     try {
+      // Fetch both created and edited images concurrently
       const [
         { data: images, error: imagesError },
         { data: editedImgs, error: editedImgsError },
@@ -128,40 +131,41 @@ const Page = () => {
           .order('created_at', { ascending: false }),
       ])
 
-      // Handle potential errors from Supabase queries
+      // Handle potential errors
       if (imagesError || editedImgsError) {
         console.error('Error fetching images:', imagesError || editedImgsError)
         return
       }
 
-      setCreatedImages(images || []) // Set fetched data, default to empty array if null
+      setCreatedImages(images || [])
       setEditedImages(editedImgs || [])
-      setPrompt('') // Clear prompt input post-fetch
-      setImageParams(initialParams) // Reset parameters to default
+      setPrompt('')
+      setImageParams(initialParams)
     } catch (error) {
-      console.error('Error during fetch:', error) // Log unexpected errors
+      console.error('Error during fetch:', error)
     } finally {
-      setLoading(false) // Set loading state to false after operation
+      setLoading(false)
     }
   }
 
-  // useEffect hook to automatically fetch images on component mount or when canvasId changes
+  // Fetch images when component mounts or canvasId changes
   useEffect(() => {
     if (!supabase || !canvasId) return
     fetchCreatedImages()
   }, [supabase, canvasId])
 
-  // Function to edit  previously generated images
-
+  // Function to edit previously generated images
   const editImage = async () => {
     if (!selectedImage || loadingEditing) return
-    setLoadingEditing(true) // Set loading state to true during edit operation
+    setLoadingEditing(true)
+
     let payload = {
       imageUrl: selectedImage.url,
       command: editingCommand,
       canvas: canvasId,
       userId: user.id,
     }
+
     try {
       const res = await fetch('/api/edit', {
         method: 'POST',
@@ -179,7 +183,7 @@ const Page = () => {
         })
       }
     } catch (error) {
-      console.error('Error generating images:', error)
+      console.error('Error editing image:', error)
       toast({
         variant: 'outline',
         className: 'bg-white text-black',
@@ -189,6 +193,7 @@ const Page = () => {
     } finally {
       setOpenDialog(false)
       setLoadingEditing(false)
+      // Fetch updated images after a short delay
       setTimeout(() => {
         fetchCreatedImages()
       }, 2000)
@@ -242,8 +247,6 @@ const Page = () => {
 
           {/* Generate Button */}
           <div className="w-full items-center justify-center flex">
-
-
             <button
               onClick={generateImages}
               className="inline-flex h-12 text-center  outline-none animate-shimmer items-center gap-2 justify-center rounded-full border text-slate-700 border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium transition-colors "
@@ -398,7 +401,7 @@ const Page = () => {
                 </Dialog>
               </div>
               <p
-                className="P-text lg:ml-[90%] ml-[78%]  cursor-pointer"
+                className="P-text lg:ml-[90%]   cursor-pointer"
                 onClick={() => setSelectedImage('')}
               >
                 <span className="w-10 h-10 text-white/50  cursor-pointer">
