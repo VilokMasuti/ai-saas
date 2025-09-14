@@ -2,11 +2,12 @@ import { supabase } from "@/supabse_client";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
+// Initialize Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2024-06-20",
 });
 
-// Helper to convert stream to buffer
+// Convert stream to buffer
 async function getRawBody(readable) {
   const chunks = [];
   for await (const chunk of readable) {
@@ -25,7 +26,6 @@ export async function POST(req) {
   }
 
   let event;
-
   try {
     event = stripe.webhooks.constructEvent(
       rawBody,
@@ -39,11 +39,11 @@ export async function POST(req) {
 
   try {
     if (event.type === "customer.subscription.created") {
-      const subscription = event.data.object;
+      const subscriptionData = event.data.object;
       await supabase.from("subscriptions").insert([
         {
-          sub_id: subscription.id,
-          user_id: subscription.metadata.userId,
+          sub_id: subscriptionData.id,
+          user_id: subscriptionData.metadata.userId,
         },
       ]);
     }
