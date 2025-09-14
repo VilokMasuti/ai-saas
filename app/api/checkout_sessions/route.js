@@ -17,7 +17,7 @@ export async function POST(req) {
                     userId,
                 }
             },
-            line_items: [{ price: "price_1PewJAFFwTMwop6T75sXBret", quantity: 1 }],
+            line_items: [{ price: "price_1S797FGi9t2xsAx39lUt6DCJ", quantity: 1 }],
             mode: "subscription",
             success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${baseUrl}/cancel?session_id={CHECKOUT_SESSION_ID}`
