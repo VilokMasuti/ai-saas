@@ -1,5 +1,6 @@
 'use client'
-import { supabase } from '../../supabse_client.js'
+
+import { supabase } from '@/supabse_client'
 import { useEffect, useState } from 'react'
 
 export default function useUser() {

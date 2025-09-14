@@ -2,11 +2,11 @@
 
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import React from 'react'
 import Header from '../Header'
-import { useUser } from '../hooks/useUser'
-import { supabase } from '@/supabse_client'
+
 import { Progress } from '@/components/ui/progress'
+import { supabase } from '@/supabse_client'
+import useUser from '../hooks/useUser'
 
 const Usagepage = () => {
   const router = useRouter()
