@@ -1,19 +1,13 @@
+import { supabase } from "@/supabse_client";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { Readable } from "stream";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2024-06-20",
 });
 
-export const config = {
-  api: {
-    bodyParser: false, // ⛔ disables automatic parsing
-  },
-};
-
 // Helper to convert stream to buffer
-async function buffer(readable) {
+async function getRawBody(readable) {
   const chunks = [];
   for await (const chunk of readable) {
     chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
@@ -22,7 +16,7 @@ async function buffer(readable) {
 }
 
 export async function POST(req) {
-  const rawBody = await buffer(req.body);
+  const rawBody = await getRawBody(req.body);
   const sig = req.headers.get("stripe-signature");
 
   if (!sig) {
@@ -43,16 +37,20 @@ export async function POST(req) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
-  // ✅ Handle the event
-  if (event.type === "customer.subscription.created") {
-    const subscription = event.data.object;
-    await supabase.from("subscriptions").insert([
-      {
-        sub_id: subscription.id,
-        user_id: subscription.metadata.userId,
-      },
-    ]);
-  }
+  try {
+    if (event.type === "customer.subscription.created") {
+      const subscription = event.data.object;
+      await supabase.from("subscriptions").insert([
+        {
+          sub_id: subscription.id,
+          user_id: subscription.metadata.userId,
+        },
+      ]);
+    }
 
-  return NextResponse.json({ received: true }, { status: 200 });
+    return NextResponse.json({ received: true }, { status: 200 });
+  } catch (err) {
+    console.error("Webhook processing error:", err.message);
+    return NextResponse.json({ error: "Processing failed" }, { status: 500 });
+  }
 }
