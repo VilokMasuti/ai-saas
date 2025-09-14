@@ -1,19 +1,19 @@
 'use client'
 
-import Link from 'next/link'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
+import Link from 'next/link'
 
-import { redirect, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
-import { useUser } from './hooks/useUser'
+
 import { supabase } from '../supabse_client'
+import useUser from './hooks/useUser'
 
 export default function Header() {
   // Get the current user using a custom hook

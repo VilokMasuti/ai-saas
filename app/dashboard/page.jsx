@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 import { v4 as uuidv4 } from 'uuid'
 
 // Import custom hooks and utilities
-import { useUser } from '../hooks/useUser'
+import  useUser  from '../hooks/useUser'
 import { supabase } from '../../supabse_client'
 import { GlareCard } from '../../components/ui/glare-card'
 import Image from 'next/image'

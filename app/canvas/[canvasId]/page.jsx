@@ -1,13 +1,4 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import Header from '../../Header'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import {
   Dialog,
   DialogContent,
@@ -16,24 +7,32 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { useEffect, useState } from 'react'
+import Header from '../../Header'
 
+import { ToastAction } from '@/components/ui/toast'
+import { useToast } from '@/hooks/use-toast'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import {
   dimensions,
   filters,
   imagesNumbers,
   models,
 } from '../../../utils/utiles.js'
-import { ToastAction } from '@/components/ui/toast'
-import { useToast } from '@/hooks/use-toast'
-import { useParams } from 'next/navigation'
-import { useUser } from '../../hooks/useUser'
-import Link from 'next/link'
-import Image from 'next/image'
+import useUser from '../../hooks/useUser'
 import Loading from '../../Loading/Loading'
 
+import { DownloadIcon } from '@radix-ui/react-icons'
 import { supabase } from '../../../supabse_client'
-import { DownloadIcon, ShadowOuterIcon } from '@radix-ui/react-icons'
-import { SparklesCore } from '../../../components/ui/sparkles'
 
 const Page = () => {
   // Initial default parameters for image generation

@@ -2,7 +2,8 @@
 import { supabase } from '../../supabse_client.js'
 import { useEffect, useState } from 'react'
 
-export function useUser() {
+export default function useUser() {
+
   const [currentUser, setCurrentUser] = useState()
   const catchUser = async () => {
     const {
