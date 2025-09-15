@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import {
   Dialog,
   DialogContent,
@@ -247,12 +247,28 @@ const Page = () => {
           {/* Generate Button */}
           <div className="w-full items-center justify-center flex">
             <button
-              onClick={generateImages}
-              className="inline-flex h-12 text-center  outline-none animate-shimmer items-center gap-2 justify-center rounded-full border text-slate-700 border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium transition-colors "
-            >
-              {loading ? 'Loading...' : 'Generate Image'}
-              <span className="animate-spin duration-1000">🪄</span>
-            </button>
+  onClick={generateImages}
+  disabled={loading}
+  aria-busy={loading}
+  aria-label="Generate image"
+  className={`inline-flex h-12 items-center gap-2 justify-center rounded-full border text-slate-700 border-slate-800 px-6 font-medium transition-all duration-300 ease-in-out
+    ${loading ? 'opacity-50 cursor-not-allowed animate-pulse' : 'hover:scale-[1.02]'}
+    bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] animate-shimmer
+  `}
+>
+  {loading ? (
+    <>
+      <span className="animate-spin text-white">🪄</span>
+      <span className="text-white">Wait-Bro</span>
+    </>
+  ) : (
+    <>
+      <span className="text-white">Generate Image</span>
+      <span className="text-white">🪄</span>
+    </>
+  )}
+</button>
+
           </div>
         </div>
 

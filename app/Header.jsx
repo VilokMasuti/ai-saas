@@ -74,8 +74,14 @@ export default function Header() {
             </DropdownMenuItem>
           </Link>
 
+            <Link href={'/plans'}>
+            <DropdownMenuItem className="ml-3 uppercase cursor-pointer font-bold textC">
+           plans
+            </DropdownMenuItem>
+          </Link>
+
           {/* Separator line */}
-          <DropdownMenuSeparator className="bg-white/10" />
+          <DropdownMenuSeparator className="bg-white/30" />
 
           {/* Logout option */}
           <DropdownMenuItem
