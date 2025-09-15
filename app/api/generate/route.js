@@ -1,9 +1,8 @@
-
-import { supabase } from '@/supabse_client'
+import { supabase } from '../../../supabse_client.js'
 import { NextResponse } from 'next/server'
 import Replicate from 'replicate'
 const replicate = new Replicate({
-  auth: `${process.env.REPLICATE_SECRET}`,
+  auth: `${process.env.NEXT_PUBLIC_REPLICATE_SECRET}`,
 })
 
 export async function POST(req, res) {
